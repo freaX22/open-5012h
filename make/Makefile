@@ -10,8 +10,6 @@ OBJCOPY = arm-none-eabi-objcopy
 SIZE = arm-none-eabi-size
 
 ifeq ($(OS), Windows_NT)
-  MKDIR = gmkdir
-else
   MKDIR = mkdir
 endif
 
@@ -77,7 +75,7 @@ $(BUILD)/$(BIN).bin: $(BUILD)/$(BIN).elf
 	@$(CC) $(CFLAGS) $(filter %/$(subst .o,.c,$(notdir $@)), $(SRCS)) -c -o $@
 
 directory:
-	@$(MKDIR) -p $(BUILD)
+	@$(MKDIR) $(BUILD)
 
 size: $(BUILD)/$(BIN).elf
 	@echo size:
